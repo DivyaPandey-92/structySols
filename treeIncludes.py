@@ -38,12 +38,29 @@ def tree_includes(root, target):
     
 
   # return False
-
+b
   # if lc or rc:
   #   return True
   # else:
   #   return False
 
-    
+
+ from collections import deque
+
+def tree_includes(root, target):
+  if root is None:
+    return False
+  queue=deque([ root ])
+  
+  while queue:
+    cur_node=queue.popleft()
+    if cur_node.val==target:
+      return True
+    if cur_node.left:
+      queue.append(cur_node.left) 
+    if cur_node.right:
+      queue.append(cur_node.right) 
+  return False
+     
     
   
