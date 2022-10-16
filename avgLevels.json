@@ -1,0 +1,35 @@
+# class Node:
+#   def __init__(self, val):
+#     self.val = val
+#     self.left = None
+#     self.right = None
+
+def level_averages(root):
+  pass # todo
+  if root is None:
+    return []
+  
+  levels=_level_averages(root, [], 0)
+  avg_list=[]
+  for level in levels:
+    avg_list.append(sum(level)/len(level))
+  
+  return avg_list
+    
+
+def _level_averages(root, levels, level_num):
+  
+  if root is None:
+    return 
+  
+  if level_num==len(levels):
+    levels.append([root.val])
+  else:
+    levels[level_num].append((root.val))
+  
+  left=_level_averages(root.left, levels, level_num+1)
+  right=_level_averages(root.right, levels, level_num+1)
+  return levels
+  
+  
+  
